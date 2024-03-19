@@ -1,18 +1,15 @@
-defmodule Clock do
-  @moduledoc """
-  Documentation for `Clock`.
-  """
+defprotocol Clock do
+  @type tref :: term()
 
-  @doc """
-  Hello world.
+  @spec now(t()) :: DateTime.t()
+  def now(clock)
 
-  ## Examples
+  @spec send_after(t(), pid() | atom(), term(), non_neg_integer()) :: tref()
+  def send_after(clock, destination, message, duration_in_ms)
 
-      iex> Clock.hello()
-      :world
+  @spec send_interval(t(), pid() | atom(), term(), non_neg_integer()) :: tref()
+  def send_interval(clock, destination, message, interval_in_ms)
 
-  """
-  def hello do
-    :world
-  end
+  @spec cancel(t(), tref()) :: :ok
+  def cancel(clock, tref)
 end
