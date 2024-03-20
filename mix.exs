@@ -13,7 +13,8 @@ defmodule Clock.MixProject do
       deps: deps(),
       package: package(),
       source_url: "https://github.com/mechanical-orchard/clock",
-      aliases: aliases()
+      aliases: aliases(),
+      docs: docs()
     ]
   end
 
@@ -40,11 +41,17 @@ defmodule Clock.MixProject do
   defp package do
     [
       maintainers: ["Byron Anderson", "Brent Wheeldon"],
-      organization: "Mechanical Orchard",
       licenses: ["MIT"],
       links: %{
         "GitHub" => "https://github.com/mechanical-orchard/clock"
       }
+    ]
+  end
+
+  defp docs do
+    [
+      main: "Clock",
+      extras: ["README.md"]
     ]
   end
 end
