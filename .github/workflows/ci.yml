@@ -16,8 +16,8 @@ jobs:
         with:
           path: |
             deps
-            _build/dev
-            _build/test
+            _build
+            priv/plts
           key: elixir-cache-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-${{github.ref}}
           restore-keys: |
             elixir-cache-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-
