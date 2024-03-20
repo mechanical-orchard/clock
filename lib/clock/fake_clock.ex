@@ -91,7 +91,7 @@ defmodule Clock.FakeClock do
   def handle_call({:travel, destination_time}, _from, state) do
     case next_events(state) do
       {:ok, upcoming_events, datetime} ->
-        if DateTime.after?(datetime, destination_time) do
+        if DateTime.compare(datetime, destination_time) == :gt do
           {:reply, :done, %{state | now: destination_time}}
         else
           state = %{state | now: datetime}
