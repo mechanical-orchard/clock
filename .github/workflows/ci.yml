@@ -25,12 +25,14 @@ jobs:
         with:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
-      - name: Setup & Run Tests
+      - name: Get deps
+        run: mix deps.get
+      - name: Run Tests
         env:
           MIX_ENV: test
-        run: |
-          mix deps.get
-          mix test --trace
+        run: mix test --trace
+      - name: Build docs
+        run: mix docs
       - name: Credo
         run: mix credo
       - name: Create PLTs
