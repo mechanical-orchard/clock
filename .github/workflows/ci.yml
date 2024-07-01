@@ -21,7 +21,7 @@ jobs:
           key: elixir-cache-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-${{github.ref}}
           restore-keys: |
             elixir-cache-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-
-      - uses: erlef/setup-beam@v1.17.5
+      - uses: erlef/setup-beam@v1.18.0
         with:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
